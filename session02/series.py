@@ -92,13 +92,15 @@ if __name__ == "__main__":
     assert lucas(6) == 18
     assert lucas(7) == 29
     
-    #test sum_series
+    #test sum_series using defaults
     assert sum_series(0) == 0
     assert sum_series(1) == 1
     assert sum_series(2) == 1
     assert sum_series(3) == 2
     assert sum_series(4) == 3
     assert sum_series(7) == 13
+
+    #test sum_series using optional parameters
     assert sum_series(0, 2, 1) == 2
     assert sum_series(1, 2, 1) == 1
     assert sum_series(2, 2, 1) == 3
