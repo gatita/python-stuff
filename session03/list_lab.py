@@ -3,25 +3,42 @@
 fruit = ["Apples", "Pears", "Oranges", "Peaches"]
 
 def series1(fruit):
-    fruit_copy = fruit[:]
     print fruit
     new_fruit = raw_input("What's another type of fruit? ")
-    fruit_copy.append(new_fruit)
-    print fruit_copy
-    number = raw_input("Pick a number, 1 through %i. " % len(fruit_copy))
-    print number + ': ' + fruit_copy[int(number)-1]
-    fruit_copy = ['Grapes'] + fruit_copy
-    print fruit_copy
-    fruit_copy.insert(0, 'Kiwi')
-    print fruit_copy
+    fruit.append(new_fruit)
+    print fruit
+    number = raw_input("Pick a number, 1 through %i. " % len(fruit))
+    print number + ': ' + fruit[int(number)-1]
+    fruit = ['Grapes'] + fruit
+    print fruit
+    fruit.insert(0, 'Kiwi')
+    print fruit
 
-    for x in fruit_copy:
+    for x in fruit:
         if x[0] == 'P':
             print x
             
-    return fruit_copy
+    return fruit
 
-foo = series1(fruit)
+fruit = series1(fruit)
 
-
-
+def series2(fruit):
+    fruit_copy = fruit[:]
+    print fruit_copy
+    fruit_copy.pop()
+    print fruit_copy
+    bad_fruit = raw_input("Pick a fruit from the list to delete. ")
+    fruit_copy.remove(bad_fruit)
+    print fruit_copy
+    
+    #bonus
+    fruit_copy = fruit_copy * 2
+    bad_fruit2 = raw_input("Pick a fruit, any fruit. ")
+    while bad_fruit2 not in fruit_copy:
+        bad_fruit2 = raw_input("Pick another fruit. ")
+    for fruit in fruit_copy:
+        if fruit == bad_fruit2:
+            fruit_copy.remove(bad_fruit2)
+    print fruit_copy
+    
+series2(fruit)
