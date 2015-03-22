@@ -42,3 +42,16 @@ def series2(fruit):
     print fruit_copy
     
 series2(fruit)
+
+def series3(fruit):
+    fruit_copy = fruit[:]
+    for fruit in fruit_copy[:]:
+        x = raw_input('Do you like %s? ' % fruit.lower())
+        while x != 'no' and x != 'yes':
+            x = raw_input('Please answer "yes" or "no". ')
+        if x == 'no':
+            fruit_copy.remove(fruit)
+    print fruit_copy
+    
+series3(fruit)
+        
