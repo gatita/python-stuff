@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-fruit = ["Apples", "Pears", "Oranges", "Peaches"]
+fruit = ['Apples', 'Pears', 'Oranges', 'Peaches']
 
 def series1(fruit):
     print fruit
@@ -27,15 +27,15 @@ def series2(fruit):
     print fruit_copy
     fruit_copy.pop()
     print fruit_copy
-    bad_fruit = raw_input("Pick a fruit from the list to delete. ")
+    bad_fruit = raw_input('Pick a fruit from the list to delete. ')
     fruit_copy.remove(bad_fruit)
     print fruit_copy
     
     #bonus
     fruit_copy = fruit_copy * 2
-    bad_fruit2 = raw_input("Pick a fruit, any fruit. ")
+    bad_fruit2 = raw_input('Pick a fruit, any fruit. ')
     while bad_fruit2 not in fruit_copy:
-        bad_fruit2 = raw_input("Pick another fruit. ")
+        bad_fruit2 = raw_input('Pick another fruit. ')
     for fruit in fruit_copy:
         if fruit == bad_fruit2:
             fruit_copy.remove(bad_fruit2)
@@ -46,7 +46,7 @@ series2(fruit)
 def series3(fruit):
     fruit_copy = fruit[:]
     for fruit in fruit_copy[:]:
-        x = raw_input('Do you like %s? ' % fruit.lower())
+        x = raw_input("Do you like %s? " % fruit.lower())
         while x != 'no' and x != 'yes':
             x = raw_input('Please answer "yes" or "no". ')
         if x == 'no':
@@ -54,4 +54,12 @@ def series3(fruit):
     print fruit_copy
     
 series3(fruit)
-        
+
+def series4(fruit):
+    fruit_copy = fruit[:]
+    for i in range(len(fruit_copy)):
+        fruit_copy[i] = fruit_copy[i][::-1]
+    fruit.pop()
+    print fruit_copy
+    print fruit
+    
