@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def fibonacci(n):
     """Return the nth number in the Fibonacci sequence"""
     f1, f2 = 0, 1
