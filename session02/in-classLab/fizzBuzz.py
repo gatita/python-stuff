@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def fizzBuzz():
     for i in range(1,101):
         if i % 3 == 0 and i % 5 == 0:
@@ -19,8 +21,3 @@ def fizzBuzz2():
             print 'Buzz'
         else:
             print i
-            
-
-
-    
-    
