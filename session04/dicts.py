@@ -28,7 +28,7 @@ for i, j in zip(d.keys(), d.values()):
 #4
 s2= set([2,4,6,8,10,12,14,16,18,20])
 s3 = set([3,6,9,12,15,18])
-s4 = set([4,8,16,20])
+s4 = set([4,8,12,16,20])
 
 print s3.issubset(s2)
 print s4.issubset(s2)
