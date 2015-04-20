@@ -4,15 +4,16 @@ from io import open
 import random
 
 def read_book(textfile):
-    """Open EBook text file and return content as a list of strings."""
+    """Open EBook text file and return contents as a list of strings."""
     f = open(textfile, encoding='utf-8')
     text = " ".join(f.readlines())
+    start = text.index('THE ADVENTURES OF SHERLOCK HOLMES')
     stop = text.index('End of the Project Gutenberg EBook')
-    text = text[:stop]
+    text = text[start:stop]
     return text.split()
 
 def create_trigram(words):
-    """ create trigram dictionary """
+    """Create trigram dictionary from list of words."""
     myDict = {}
     for i in range(len(words)-2):
         myKey = tuple(words[i:i+2])
@@ -45,4 +46,8 @@ def generate_text(trigram):
 # words = readBook('sherlock.txt')
 # trigram = create_trigram(words)
 # print generate_text(trigram)
+
+#Things to add:
+#Recognize question words and add '?' at end of sentence
+#Remove quotations
 
