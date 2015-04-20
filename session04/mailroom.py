@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import re
-# name: [total donated, number of donations, avg donation amt]
+import re, sys
+
 DONOR_LIST = {}
 
 def initial_input():
@@ -11,10 +11,16 @@ def initial_input():
     }
 
     choice = raw_input('Send a Thank You? or Create a Report?\n')
+    if choice == 'exit':
+        sys.exit()
     choice_select[choice]()
 
+
 def send_thankyou():
-    name = raw_input('Provide full name of donor.\n')
+    name = raw_input('Provide full name of donor. Enter "Main Menu" at any point to start over.\n')
+    if name == 'Main Menu':
+        initial_input()
+
     if name == 'list':
         for name in DONOR_LIST.keys():
             print name
@@ -26,9 +32,14 @@ def send_thankyou():
     pattern = re.compile('\d+(\.\d+)?')
     donation = raw_input('Donation amount?\n')
 
+    if donation == 'Main Menu':
+        initial_input()
+
     while pattern.match(donation) == None:
         print "Please provide a number for donation amount.\n"
         donation = raw_input('Donation amount?\n')
+        if donation == 'Main Menu':
+            initial_input()
 
     DONOR_LIST[name].append(int(donation))
 
