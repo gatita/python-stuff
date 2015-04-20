@@ -17,14 +17,16 @@ def initial_input():
 
 
 def send_thankyou():
-    name = raw_input('Provide full name of donor. Enter "Main Menu" at any point to start over.\n')
+    name = raw_input('Provide full name of donor. Enter "Main Menu" at any point to start over. Enter "List" to view the list of donors.\n')
     if name == 'Main Menu':
         initial_input()
 
-    if name == 'list':
+    if name == 'List':
         for name in DONOR_LIST.keys():
             print name
         name = raw_input('Choose a donor name.\n')
+        if name == 'Main Menu':
+            initial_input()
 
     if name not in DONOR_LIST:
         DONOR_LIST[name] = []
