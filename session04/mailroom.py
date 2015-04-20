@@ -58,7 +58,9 @@ def create_report():
     for key in DONOR_LIST.keys():
         report[key] = [sum(DONOR_LIST[key]), len(DONOR_LIST[key]), sum(DONOR_LIST[key]) / len(DONOR_LIST[key])]
 
-    for key, value in report.iteritems():
+    # sorted_report = sorted(report)
+
+    for key, value in sorted(report.iteritems()):
         total, count, avg = value
         print "{:<10} {:<10} {:<10} {:<10}".format(key, total, count, avg)
 
