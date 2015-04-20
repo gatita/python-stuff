@@ -4,9 +4,11 @@ from io import open
 import random
 
 def read_book(textfile):
-    """ open text file and return contents as a string """
+    """Open EBook text file and return content as a list of strings."""
     f = open(textfile, encoding='utf-8')
     text = " ".join(f.readlines())
+    stop = text.index('End of the Project Gutenberg EBook')
+    text = text[:stop]
     return text.split()
 
 def create_trigram(words):
@@ -19,10 +21,9 @@ def create_trigram(words):
     return myDict
     
 def generate_text(trigram):
-    """ Generate new text from trigram dictionary. """
-    myText = ""
+    """Generate new text from trigram dictionary."""
     newText = random.choice(trigram.keys())
-    myText += ' '.join(newText)
+    myText = ' '.join(newText)
     myText = myText[:1].upper() + myText[1:]
     myText += ' ' + str(random.choice(trigram[newText]))
     while len(myText.split()) < 200:
@@ -36,12 +37,12 @@ def generate_text(trigram):
             myText += ' ' + ' '.join(newText)
     if myText[-1] != '.':
         myText += '.'
-    return str(myText)
+    return myText
     
     
     
     
-# words = readBook('sherlock_small.txt')
+# words = readBook('sherlock.txt')
 # trigram = create_trigram(words)
-# generate_text(trigram)
+# print generate_text(trigram)
 
