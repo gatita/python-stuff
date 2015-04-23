@@ -17,3 +17,15 @@ def clean_file(filename, outfile=None):
         outfile.write(line+'\n')
 
 clean_file('test_file_with_spaces.txt', 'output_test.txt')
+
+#using list comprehension
+
+def clean_file2(filename, outfile=None):
+    f = io.open(filename).readlines()
+    output = [line.strip()+'\n' for line in f]
+    if not outfile:
+        outfile = filename
+    io.open(outfile, 'w').writelines(output)
+
+
+clean_file2('test_file_with_spaces.txt', 'output_test2.txt')
