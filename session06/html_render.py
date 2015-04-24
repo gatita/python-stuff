@@ -1,40 +1,29 @@
 #!/usr/bin/env python
 
-from io import open, StringIO
-
 class Element(object):
     tag = 'html'
-    indent = '  '
+    indent = '    '
+
     def __init__(self, content=None):
         if not content:
-            self.parent = []
+            self.children = []
         else:
-            self.parent = [content]
+            self.children = [content]
 
+    def append(self, new_content):
+        self.children.append(new_content)
 
-    def append(self, new_string):
-        self.parent.append(new_string)
-
-    def render(self, file_out, ind =''):
+    def render(self, file_out, ind=''):
         file_out.write(u'<%s>\n' % self.tag)
-        for child in self.parent:
-            file_out.write(ind + child + '\n')
+        for child in self.children:
+            file_out.write(ind + unicode(child)+'\n')
         file_out.write(u'</%s>' % self.tag)
 
 
+# meep = Element()
+# meep.append('hey there')
 
-
-
-
-
-
-
-
-
-
-
-
-
+# print meep.children
 
 
 
