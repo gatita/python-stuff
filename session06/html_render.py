@@ -65,4 +65,19 @@ class Br(SelfClosingTag):
     tag = 'br'
 
 
+class A(Element):
+    tag = 'a'
+
+    def __init__(self, link, content=None):
+        Element.__init__(self, content)
+        self.url = link
+        self.linkText = content
+
+    def render(self, file_out, ind=''):
+        file_out.write('\n' + ind + u'<%s ' % self.tag)
+        file_out.write("href='%s'>%s" % (self.url, self.linkText))
+        file_out.write(u'<%s/>' % self.tag)
+
+
+
 
