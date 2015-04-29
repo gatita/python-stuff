@@ -54,5 +54,15 @@ class OneLineTag(Element):
 class Title(OneLineTag):
     tag = 'title'
 
+class SelfClosingTag(Element):
+    def render(self, file_out, ind=''):
+        file_out.write('\n' + ind + u'<%s/>' % self.tag)
+
+class Hr(SelfClosingTag):
+    tag = 'hr'
+
+class Br(SelfClosingTag):
+    tag = 'br'
+
 
 
