@@ -19,7 +19,8 @@ class Element(object):
         if self.attributes:
             file_out.write('\n' + ind + u'<%s ' % self.tag)
             for k, v in self.attributes.items():
-                file_out.write("%s='%s'>" % (k,v))
+                file_out.write(u"%s='%s' " % (k,v))
+            file_out.write(u'>')
         else:
             file_out.write('\n' + ind + u'<%s>' % self.tag)
 
@@ -27,14 +28,11 @@ class Element(object):
             try:
                 child.render(file_out, ind + self.indent)
             except AttributeError:
-                file_out.write(ind + unicode(child))
-        file_out.write('\n' + ind + u'</%s>' % self.tag)
+                file_out.write(' ' + unicode(child))
+        file_out.write('\n' + ind + u'</%s> ' % self.tag)
 
 class Html(Element):
     tag = 'html'
-
-    # def __init__(self, content=None):
-    #     Element.__init__(self, content=None)
 
 class Body(Element):
     tag = 'body'
@@ -77,6 +75,29 @@ class A(Element):
         file_out.write('\n' + ind + u'<%s ' % self.tag)
         file_out.write("href='%s'>%s" % (self.url, self.linkText))
         file_out.write(u'<%s/>' % self.tag)
+
+class Ul(Element):
+    tag = 'ul'
+
+
+class Li(Element):
+    tag = 'li'
+
+class H(OneLineTag):
+    tag = 'h'
+
+    def __init__(self, level, content=None):
+        OneLineTag.__init__(self, content)
+        self.level = level
+        self.title = content
+
+    def render(self, file_out, ind=''):
+        file_out.write('\n' + ind + u'<%s%s>' % (self.tag, self.level))
+        file_out.write(u'%s' % self.title)
+        file_out.write(u'</%s%s>' % (self.tag, self.level))
+
+
+
 
 
 
