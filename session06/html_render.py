@@ -14,16 +14,22 @@ class Element(object):
         self.children.append(new_content)
 
     def render(self, file_out, ind=''):
-        file_out.write(u'<%s>\n' % self.tag)
+        file_out.write('\n' + ind + u'<%s>' % self.tag)
         for child in self.children:
-            file_out.write(ind + unicode(child)+'\n')
-        file_out.write(u'</%s>' % self.tag)
+            try:
+                child.render(file_out, ind + self.indent)
+            except AttributeError:
+                file_out.write(ind + unicode(child)+'\n')
+        file_out.write('\n' + ind + u'</%s>' % self.tag)
 
 
-# meep = Element()
-# meep.append('hey there')
+class Html(Element):
+    tag = 'html'
 
-# print meep.children
+class Body(Element):
+    tag = 'body'
 
+class P(Element):
+    tag = 'p'
 
 
