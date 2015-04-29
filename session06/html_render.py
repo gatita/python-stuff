@@ -29,7 +29,10 @@ class Element(object):
                 child.render(file_out, ind + self.indent)
             except AttributeError:
                 file_out.write(' ' + unicode(child))
-        file_out.write('\n' + ind + u'</%s> ' % self.tag)
+        if self.tag == 'li' or self.tag == 'p':
+            file_out.write(u'</%s> ' % self.tag)
+        else:
+            file_out.write('\n' + ind + u'</%s> ' % self.tag)
 
 class Html(Element):
     tag = 'html'
