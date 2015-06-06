@@ -21,3 +21,13 @@ class Circle(object):
         self._area = math.pi * value**2
 
     radius = property(_getradius, _setradius)
+
+    def _getdiameter(self):
+        return self._diameter
+
+    def _setdiameter(self, value):
+        self._diameter = value
+        self._radius = value / 2
+        self._area = math.pi * self._radius**2
+
+    diameter = property(_getdiameter, _setdiameter)
