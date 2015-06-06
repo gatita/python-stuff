@@ -8,7 +8,7 @@ def rot13(text):
     table = maketrans(original, cyphered)
     return text.translate(table)
 
-#test rot13 encryption
+test rot13 encryption
 if __name__ == '__main__':
     assert rot13('hi') == 'uv'
     assert rot13('HI') == 'UV'
