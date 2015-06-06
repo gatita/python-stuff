@@ -37,6 +37,10 @@ class Element(object):
 class Html(Element):
     tag = 'html'
 
+    def render(self, file_out, ind=''):
+        file_out.write(u'<!DOCTYPE html>')
+        Element.render(self, file_out, ind='')
+
 class Body(Element):
     tag = 'body'
 
@@ -57,7 +61,13 @@ class Title(OneLineTag):
 
 class SelfClosingTag(Element):
     def render(self, file_out, ind=''):
-        file_out.write('\n' + ind + u'<%s/>' % self.tag)
+        if self.attributes:
+            file_out.write('\n' + ind + u'<%s ' % self.tag)
+            for k, v in self.attributes.items():
+                file_out.write(u"%s='%s'" % (k,v))
+                file_out.write(u'/>')
+        else:
+            file_out.write('\n' + ind + u'<%s/>' % self.tag)
 
 class Hr(SelfClosingTag):
     tag = 'hr'
@@ -65,6 +75,8 @@ class Hr(SelfClosingTag):
 class Br(SelfClosingTag):
     tag = 'br'
 
+class Meta(SelfClosingTag):
+    tag = 'meta'
 
 class A(Element):
     tag = 'a'
@@ -98,10 +110,4 @@ class H(OneLineTag):
         file_out.write('\n' + ind + u'<%s%s>' % (self.tag, self.level))
         file_out.write(u'%s' % self.title)
         file_out.write(u'</%s%s>' % (self.tag, self.level))
-
-
-
-
-
-
 
