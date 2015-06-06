@@ -42,3 +42,7 @@ class Circle(object):
         c.radius = y / 2
         return c
 
+    def __str__(self):
+        return 'Circle with radius: %.6f' % self.radius
+
+
