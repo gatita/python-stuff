@@ -33,3 +33,12 @@ class Circle(object):
         return math.pi * self._radius**2
 
     area = property(_getarea)
+
+    ##extra credit
+    @classmethod
+    def from_diameter(cls, y):
+        c = cls(x=y/2)
+        c.diameter = y
+        c.radius = y / 2
+        return c
+
