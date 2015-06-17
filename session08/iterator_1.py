@@ -29,18 +29,19 @@ class IterateMe_1(object):
 class IterateMe_2(object):
     """
     About as simple an iterator as you can get:
-    returns the sequence of numbers from zero to 4
-    ( like xrange(4) )
+    returns the sequence of numbers from x to y
+    ( like xrange(x,y,step) )
     """
-    def __init__(self, start=0, stop=5):
-        self.current = start -1
+    def __init__(self, start=0, stop=5, step=1):
+        self.current = start - step
         self.stop = stop
+        self.step = step
 
     def __iter__(self):
         return self
 
     def next(self):
-        self.current += 1
+        self.current += self.step
         if self.current < self.stop:
             return self.current
         else:
